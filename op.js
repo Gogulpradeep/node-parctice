@@ -22,46 +22,30 @@
 
 //module.exports = {add,sub,mul,div};
 
-const { error } = require('console');
+
 const fs = require('fs');
 const  path = require('path');
+const fsPromise = require('fs').promises;
 
-fs.readFile(path.join(__dirname,'files','start.txt'),'utf-8', (error,data)=>{
-    if (error){
-        throw error;
 
-    }else{
-        console.log(data);
+const filesOp = async()=>{
+    try{
+        const data = await fsPromise.readFile(path.join(__dirname,'files','start.txt'),'utf-8');
+   console.log('read completed');
+   console.log(data);
+    await fsPromise.writeFile(path.join(__dirname,"files","gamingpuli.txt"),"hello, the legend")
+    console.log('write completed');
+    await fsPromise.appendFile(path.join(__dirname,"files","gamingpuli.txt")," /n/n hi guys")
+    console.log('updates is compled');
+    await fsPromise.rename(path.join(__dirname,'files','gamingpuli.txt'),path.join(__dirname,'files','gogulpradeep.txt'))
+     console.log("rename is completed");
     }
-} );
-
-fs.writeFile(path.join(__dirname,"files","gamingpuli.txt"),"hello, the legend",(error,data)=>{
-    if(error){
-        throw error;
-    }else{
-        console.log("write completed");
+    catch(err){
+        console.error(err);
     }
-    fs.appendFile(path.join(__dirname,"files","gamingpuli.txt")," /n/n hi guys",(error,data)=>{
-    if(error){
-        throw error;
-    }else{
-        console.log('updates is compled');
-    }
-    fs.rename(path.join(__dirname,'files','gamingpuli.txt'),path.join(__dirname,'files','gogulpradeep.txt'),(error,data)=>{
-    if (error){
-        throw error;
-    } else{
+};
 
-
-        console.log("rename is completed");
-    }
-});
-
-
-});
-
-    
-});
+filesOp();
 
 
 
