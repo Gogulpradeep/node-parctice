@@ -22,6 +22,7 @@
 
 //module.exports = {add,sub,mul,div};
 
+const { error } = require('console');
 const fs = require('fs');
 const  path = require('path');
 
@@ -33,6 +34,34 @@ fs.readFile(path.join(__dirname,'files','start.txt'),'utf-8', (error,data)=>{
         console.log(data);
     }
 } );
+
+fs.writeFile(path.join(__dirname,"files","gamingpuli.txt"),"hello, the legend",(error,data)=>{
+    if(error){
+        throw error;
+    }else{
+        console.log("write completed");
+    }
+    fs.appendFile(path.join(__dirname,"files","gamingpuli.txt")," /n/n hi guys",(error,data)=>{
+    if(error){
+        throw error;
+    }else{
+        console.log('updates is compled');
+    }
+    fs.rename(path.join(__dirname,'files','gamingpuli.txt'),path.join(__dirname,'files','gogulpradeep.txt'),(error,data)=>{
+    if (error){
+        throw error;
+    } else{
+
+
+        console.log("rename is completed");
+    }
+});
+
+
+});
+
+    
+});
 
 
 
