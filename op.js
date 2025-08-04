@@ -39,6 +39,10 @@ const filesOp = async()=>{
     console.log('updates is compled');
     await fsPromise.rename(path.join(__dirname,'files','gamingpuli.txt'),path.join(__dirname,'files','gogulpradeep.txt'))
      console.log("rename is completed");
+     await fsPromise.unlink(path.join(__dirname,"files","start.txt"))
+     console.log('filees is successully delected');
+     await fsPromise.writeFile(path.join(__dirname,"files","puliisback.txt")," hello to world i am become  a softwre devepoler");
+     console.log(' puli is back')
     }
     catch(err){
         console.error(err);
